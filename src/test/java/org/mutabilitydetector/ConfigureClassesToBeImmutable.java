@@ -10,7 +10,9 @@ public class ConfigureClassesToBeImmutable {
     
     public static final MutabilityAsserter MUTABILITY = configured(new ConfigurationBuilder() {
         @Override public void configure() {
-            overrideAsDefinitelyImmutable(DigitsOfPi.class);
+            hardcodeAsDefinitelyImmutable(DigitsOfPi.class);
+            
+            mergeHardcodedResultsFrom(JDK);
         }
     });
     
@@ -22,6 +24,11 @@ public class ConfigureClassesToBeImmutable {
     @Test
     public void hardcodedResultsAreIgnoredWhenTestingClassDirectly() throws Exception {
         MUTABILITY.assertInstancesOf(DigitsOfPi.class, areNotImmutable());
+    }
+
+    @Test
+    public void canMergeHardcodedResultsWithOutOfTheBoxConfiguration() throws Exception {
+        MUTABILITY.assertImmutable(HasAStringField.class);
     }
 
     
@@ -56,5 +63,12 @@ public class ConfigureClassesToBeImmutable {
             return other.piDigitsLeftOfDecimalPlace() + "." + other.piDigitsRightOfDecimalPlace();
         }
         
+    }
+    
+    static final class HasAStringField {
+        public final String stringField;
+        public HasAStringField(String stringField) {
+            this.stringField = stringField;
+        }
     }
 }
