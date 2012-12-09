@@ -3,6 +3,7 @@ package org.mutabilitydetector.casestudies;
 import static com.google.common.collect.ImmutableSet.copyOf;
 import static com.google.common.collect.Iterables.concat;
 import static java.util.Arrays.asList;
+import static org.mutabilitydetector.MutabilityReason.COLLECTION_FIELD_WITH_MUTABLE_ELEMENT_TYPE;
 import static org.mutabilitydetector.MutabilityReason.MUTABLE_TYPE_TO_FIELD;
 
 import java.util.Set;
@@ -56,7 +57,7 @@ public final class AssumingTheFields  {
     private boolean isMutableFieldWithName(MutableReasonDetail reasonDetail) {
         CodeLocation<?> locationOfMutability = reasonDetail.codeLocation();
         if (locationOfMutability instanceof FieldLocation) {
-            return reasonDetail.reason().isOneOf(MUTABLE_TYPE_TO_FIELD)
+            return reasonDetail.reason().isOneOf(MUTABLE_TYPE_TO_FIELD, COLLECTION_FIELD_WITH_MUTABLE_ELEMENT_TYPE)
                     && fieldNames.contains(((FieldLocation)locationOfMutability).fieldName());
         } else {
             return false;
