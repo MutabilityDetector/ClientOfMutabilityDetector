@@ -1,5 +1,7 @@
 package org.mutabilitydetector.runtime;
 
+import static org.mutabilitydetector.ConfigurationBuilder.OUT_OF_THE_BOX_CONFIGURATION;
+
 import org.mutabilitydetector.AnalysisResult;
 import org.mutabilitydetector.AnalysisSession;
 import org.mutabilitydetector.IsImmutable;
@@ -8,16 +10,20 @@ import org.mutabilitydetector.locations.Dotted;
 
 public final class RuntimeAnalysisExample {
     /*
-     * Create an instance of AnalysisSession. This is the object
-     * that can tell you if a class is immutable or not.
+     * Create an instance of AnalysisSession. This is the object that can tell
+     * you if a class is immutable or not.
      * 
-     * Note there is only currently a thread unsafe implementation, 
-     * however, it's intended there is no static state. So there 
-     * should be no problem in creating one per thread. Since
-     * analysisSessions cache their result, this will result in a 
-     * cache miss per thread. This should amortize over time.
+     * Note there is only currently a thread unsafe implementation, however,
+     * it's intended there is no static state. So there should be no problem in
+     * creating one per thread. Since analysisSessions cache their result, this
+     * will result in a cache miss per thread. This should amortize over time.
+     * 
+     * You may configure the analysis session differently by passing something
+     * other than the OUT_OF_THE_BOX_CONFIGURATION. See ConfigurationBuilder for
+     * more details.
      */
-    private final AnalysisSession analysisSession = ThreadUnsafeAnalysisSession.createWithCurrentClassPath();
+    private final AnalysisSession analysisSession = 
+            ThreadUnsafeAnalysisSession.createWithCurrentClassPath(OUT_OF_THE_BOX_CONFIGURATION);
 
     private void run(Object requiredToBeImmutable) {
         
