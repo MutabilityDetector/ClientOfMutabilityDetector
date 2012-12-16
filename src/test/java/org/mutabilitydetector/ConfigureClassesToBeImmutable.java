@@ -6,6 +6,7 @@ import static org.mutabilitydetector.unittesting.MutabilityMatchers.areNotImmuta
 import javax.annotation.concurrent.Immutable;
 
 import org.junit.Test;
+import org.mutabilitydetector.unittesting.MutabilityAssert;
 import org.mutabilitydetector.unittesting.MutabilityAsserter;
 
 public class ConfigureClassesToBeImmutable {
@@ -23,6 +24,7 @@ public class ConfigureClassesToBeImmutable {
     @Test
     public void defaultHardcodedConfigurationSolvesTheStringProblem() throws Exception {
         MUTABILITY.assertImmutable(HasAStringField.class);
+        MutabilityAssert.assertImmutable(HasAStringField.class);
     }
 
     @Test
@@ -43,9 +45,10 @@ public class ConfigureClassesToBeImmutable {
     
     public static final MutabilityAsserter MUTABILITY = configured(new ConfigurationBuilder() {
         @Override public void configure() {
-            hardcodeAsDefinitelyImmutable(DigitsOfPi.class);
-            mergeHardcodedResultsFrom(JDK);
+            mergeHardcodedResultsFrom(OUT_OF_THE_BOX_CONFIGURATION);
             mergeHardcodedResultsFrom(CONFIGURATION_FOR_3RD_PARTY_LIBRARY);
+
+            hardcodeAsDefinitelyImmutable(DigitsOfPi.class);
         }
     });
     
