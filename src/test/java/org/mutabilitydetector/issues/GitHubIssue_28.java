@@ -23,11 +23,32 @@ public class GitHubIssue_28 {
             return new Date(failureDate.getTime());
         }
     }
-    
+
     @Test
     public void isImmutable() {
         assertInstancesOf(Claim.class, 
                           areImmutable(),
                           assumingFieldsNamed("failureDate").areNotModifiedAndDoNotEscape());
     }
+    
+    public static final class ClaimStoringTimeOnly {
+        public final double amount;
+        private final long failureTime;
+        
+        ClaimStoringTimeOnly(double amount, Date failureDate) {
+            this.amount = amount;
+            this.failureTime = failureDate.getTime();
+        }
+        
+        public Date getFailureDate() {
+            return new Date(failureTime);
+        }
+        
+    }
+
+    @Test
+    public void isImmutable_whenUsingLongFieldInsteadOfDate() {
+        assertInstancesOf(ClaimStoringTimeOnly.class, areImmutable());
+    }
+    
 }
