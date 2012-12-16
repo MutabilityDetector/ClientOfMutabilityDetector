@@ -5,6 +5,7 @@ import net.ttsui.junit.rules.pending.PendingImplementation;
 import net.ttsui.junit.rules.pending.PendingRule;
 
 import org.joda.money.BigMoney;
+import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.joda.money.format.MoneyAmountStyle;
 import org.joda.money.format.MoneyFormatter;
@@ -33,14 +34,23 @@ public class TestJodaMoney {
         assertImmutable(MoneyFormatter.class);
     }
 
-    @Test @PendingImplementation
+    @Test public void testorg_joda_money_format_LiteralPrinterParser() throws Exception {
+        assertImmutable(Class.forName("org.joda.money.format.LiteralPrinterParser"));
+    }
+    
+    @Test 
     public void testorg_joda_money_BigMoney() {
         assertImmutable(BigMoney.class);
     }
 
-    @Test @PendingImplementation
+    @Test 
     public void testorg_joda_money_Money() {
         assertImmutable(Money.class);
+    }
+
+    @Test 
+    public void testorg_joda_money_CurrencyUnit() {
+        assertImmutable(CurrencyUnit.class);
     }
 
 }

@@ -373,7 +373,6 @@ public class TestJodaTime {
         assertImmutable(org.joda.time.tz.DefaultNameProvider.class);
     }
     
-    @PendingImplementation
     @Test public void testorg_joda_time_tz_FixedDateTimeZone() {
         assertImmutable(org.joda.time.tz.FixedDateTimeZone.class);
     }
