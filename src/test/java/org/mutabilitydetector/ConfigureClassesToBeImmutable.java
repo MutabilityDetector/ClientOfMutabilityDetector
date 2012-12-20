@@ -1,7 +1,10 @@
 package org.mutabilitydetector;
 
+import static org.mutabilitydetector.Configurations.OUT_OF_THE_BOX_CONFIGURATION;
 import static org.mutabilitydetector.unittesting.MutabilityAsserter.configured;
 import static org.mutabilitydetector.unittesting.MutabilityMatchers.areNotImmutable;
+
+import java.util.Date;
 
 import javax.annotation.concurrent.Immutable;
 
@@ -104,5 +107,7 @@ public class ConfigureClassesToBeImmutable {
         }
     }
     
-    static final class ClassFrom3rdPartyLibrary { }
+    static final class ClassFrom3rdPartyLibrary { 
+        public Date mutableField;
+    }
 }
