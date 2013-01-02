@@ -1,6 +1,6 @@
 package org.mutabilitydetector.issues;
 
-import static org.mutabilitydetector.unittesting.AllowedReason.assumingFieldsNamed;
+import static org.mutabilitydetector.unittesting.AllowedReason.assumingFields;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
 import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 
@@ -28,7 +28,7 @@ public class GitHubIssue_28 {
     public void isImmutable() {
         assertInstancesOf(Claim.class, 
                           areImmutable(),
-                          assumingFieldsNamed("failureDate").areNotModifiedAndDoNotEscape());
+                          assumingFields("failureDate").areNotModifiedAndDoNotEscape());
     }
     
     public static final class ClaimStoringTimeOnly {
@@ -43,7 +43,6 @@ public class GitHubIssue_28 {
         public Date getFailureDate() {
             return new Date(failureTime);
         }
-        
     }
 
     @Test

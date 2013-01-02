@@ -1,7 +1,7 @@
 package org.mutabilitydetector.casestudies;
 import static org.mutabilitydetector.unittesting.AllowedReason.allowingForSubclassing;
 import static org.mutabilitydetector.unittesting.AllowedReason.allowingNonFinalFields;
-import static org.mutabilitydetector.unittesting.AllowedReason.assumingFieldsNamed;
+import static org.mutabilitydetector.unittesting.AllowedReason.assumingFields;
 import static org.mutabilitydetector.unittesting.AllowedReason.provided;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
@@ -18,7 +18,6 @@ import javax.time.zone.ZoneOffsetTransition;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.mutabilitydetector.unittesting.matchers.reasons.AssumingFields;
 
 
 
@@ -315,8 +314,8 @@ public class ThreeTenTest {
         assertInstancesOf(Class.forName("javax.time.zone.ResourceZoneRulesDataProvider"), 
                           areImmutable(),
                           provided(String.class).isAlsoImmutable(),
-                          AssumingFields.named("regions", "versions").areNotModifiedAndDoNotEscape(),
-                          AssumingFields.named("rules").areModifiedAsPartAsAnUnobservableCachingStrategy());
+                          assumingFields("regions", "versions").areNotModifiedAndDoNotEscape(),
+                          assumingFields("rules").areModifiedAsPartAsAnUnobservableCachingStrategy());
     }
     
     @Test
@@ -338,13 +337,13 @@ public class ThreeTenTest {
          */
         assertInstancesOf(Class.forName("javax.time.zone.StandardZoneRules"),
                           areImmutable(),
-                          AssumingFields.named("lastRulesCache").areModifiedAsPartAsAnUnobservableCachingStrategy(),
-                          AssumingArrayFields.named("standardTransitions", 
-                                                    "standardOffsets", 
-                                                    "savingsLocalTransitions",
-                                                    "wallOffsets", 
-                                                    "savingsInstantTransitions", 
-                                                    "lastRules")
+                          assumingFields("lastRulesCache").areModifiedAsPartAsAnUnobservableCachingStrategy(),
+                          assumingFields("standardTransitions", 
+                                         "standardOffsets", 
+                                         "savingsLocalTransitions",
+                                         "wallOffsets", 
+                                         "savingsInstantTransitions", 
+                                         "lastRules")
                               .areNotModifiedAndDoNotEscape());
     }
 
@@ -363,7 +362,7 @@ public class ThreeTenTest {
                           provided(String.class).isAlsoImmutable(),
                           provided("javax.time.zone.ResourceZoneRulesDataProvider").isAlsoImmutable(),
                           allowingForSubclassing(),
-                          AssumingArrayFields.named("regionArray", "ruleIndices").areNotModifiedAndDoNotEscape());
+                          assumingFields("regionArray", "ruleIndices").areNotModifiedAndDoNotEscape());
     }
 
     // Fixed in master
@@ -384,7 +383,7 @@ public class ThreeTenTest {
         assertInstancesOf(javax.time.zone.ZoneRulesGroup.class,
                   areImmutable(),
                   provided(String.class).isAlsoImmutable(),
-                  assumingFieldsNamed("versions").areModifiedAsPartAsAnUnobservableCachingStrategy(),
+                  assumingFields("versions").areModifiedAsPartAsAnUnobservableCachingStrategy(),
                   allowingNonFinalFields());
     }
 
