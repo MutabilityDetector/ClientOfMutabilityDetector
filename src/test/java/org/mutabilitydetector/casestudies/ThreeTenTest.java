@@ -315,7 +315,7 @@ public class ThreeTenTest {
                           areImmutable(),
                           provided(String.class).isAlsoImmutable(),
                           assumingFields("regions", "versions").areNotModifiedAndDoNotEscape(),
-                          assumingFields("rules").areModifiedAsPartAsAnUnobservableCachingStrategy());
+                          assumingFields("rules").areModifiedAsPartOfAnUnobservableCachingStrategy());
     }
     
     @Test
@@ -337,7 +337,7 @@ public class ThreeTenTest {
          */
         assertInstancesOf(Class.forName("javax.time.zone.StandardZoneRules"),
                           areImmutable(),
-                          assumingFields("lastRulesCache").areModifiedAsPartAsAnUnobservableCachingStrategy(),
+                          assumingFields("lastRulesCache").areModifiedAsPartOfAnUnobservableCachingStrategy(),
                           assumingFields("standardTransitions", 
                                          "standardOffsets", 
                                          "savingsLocalTransitions",
@@ -383,7 +383,7 @@ public class ThreeTenTest {
         assertInstancesOf(javax.time.zone.ZoneRulesGroup.class,
                   areImmutable(),
                   provided(String.class).isAlsoImmutable(),
-                  assumingFields("versions").areModifiedAsPartAsAnUnobservableCachingStrategy(),
+                  assumingFields("versions").areModifiedAsPartOfAnUnobservableCachingStrategy(),
                   allowingNonFinalFields());
     }
 
