@@ -16,14 +16,14 @@ public class CircleUsingAbstractPointTest {
     @Test
     @PendingImplementation("This should fail - something is bad if it doesn't")
     public void circleIsImmutable() throws Exception {
-        assertInstancesOf(CircleUsingAbstractPoint.class, areImmutable());
+        assertInstancesOf(Circle.class, areImmutable());
     }
     
-    public static final class CircleUsingAbstractPoint {
+    public static final class Circle {
         public final int radius;
         public final Point centre;
 
-        public CircleUsingAbstractPoint(int radius, Point centre) {
+        public Circle(int radius, Point centre) {
             this.radius = radius;
             this.centre = centre;
         }
@@ -35,52 +35,28 @@ public class CircleUsingAbstractPointTest {
     }
 
     static final class ImmutablePoint implements Point {
-
         private final int y;
         private final int x;
-
         public ImmutablePoint(int x, int y) {
             this.x = x;
             this.y = y;
         }
-
-        @Override
-        public int getX() {
-            return x;
-        }
-
-        @Override
-        public int getY() {
-            return y;
-        }
+        @Override public int getX() { return x; }
+        @Override public int getY() { return y; }
     }
 
     static final class MutablePoint implements Point {
-
         private int y;
         private int x;
-
         public MutablePoint(int x, int y) {
             this.x = x;
             this.y = y;
         }
 
-        @Override
-        public int getX() {
-            return x;
-        }
+        @Override public int getX() { return x; }
+        @Override public int getY() { return y; }
 
-        @Override
-        public int getY() {
-            return y;
-        }
-
-        public void setX(int x) {
-            this.x = x;
-        }
-
-        public void setY(int y) {
-            this.y = y;
-        }
+        public void setX(int x) { this.x = x; }
+        public void setY(int y) { this.y = y; }
     }
 }
