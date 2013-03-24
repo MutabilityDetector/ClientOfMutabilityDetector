@@ -1,12 +1,13 @@
 package org.mutabilitydetector.demo;
 
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
+import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 import net.ttsui.junit.rules.pending.PendingImplementation;
 import net.ttsui.junit.rules.pending.PendingRule;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.MethodRule;
-import org.mutabilitydetector.unittesting.MutabilityAssert;
 
 public class CircleUsingAbstractPointTest {
     
@@ -15,7 +16,7 @@ public class CircleUsingAbstractPointTest {
     @Test
     @PendingImplementation("This should fail - something is bad if it doesn't")
     public void circleIsImmutable() throws Exception {
-        MutabilityAssert.assertImmutable(CircleUsingAbstractPoint.class);
+        assertInstancesOf(CircleUsingAbstractPoint.class, areImmutable());
     }
     
     public static final class CircleUsingAbstractPoint {
@@ -26,7 +27,6 @@ public class CircleUsingAbstractPointTest {
             this.radius = radius;
             this.centre = centre;
         }
-
     }
 
     static interface Point {

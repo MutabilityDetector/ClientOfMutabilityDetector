@@ -1,7 +1,8 @@
 package org.mutabilitydetector.demo;
 
 
-import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
+import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 
 import org.junit.Test;
 import org.mutabilitydetector.demo.PointTest.Point;
@@ -10,7 +11,7 @@ public class CircleTest {
     
     @Test
     public void circleIsImmutable() throws Exception {
-        assertImmutable(Circle.class);
+        assertInstancesOf(Circle.class, areImmutable());
     }
 
     public static final class Circle {
