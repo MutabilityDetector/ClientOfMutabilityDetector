@@ -24,6 +24,10 @@ public final class RuntimeAnalysisExample {
      */
     private final AnalysisSession analysisSession = 
             ThreadUnsafeAnalysisSession.createWithCurrentClassPath(OUT_OF_THE_BOX_CONFIGURATION);
+    
+    private RuntimeAnalysisExample() {
+        // Hide Utility Class Constructor - Utility classes should not have a public or default constructor
+    }
 
     private void run(Object requiredToBeImmutable) {
         

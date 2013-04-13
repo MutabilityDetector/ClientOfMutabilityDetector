@@ -19,11 +19,12 @@ import org.mutabilitydetector.repackaged.com.google.classpath.ClassPath;
 import org.mutabilitydetector.repackaged.com.google.classpath.ClassPathFactory;
 
 
-public class CheckSomeClass {
+public final class CheckSomeClass {
 
+    private CheckSomeClass() {
+        // Hide Utility Class Constructor - Utility classes should not have a public or default constructor
+    }
     public static void main(String[] args) {
-        //checkClass(TestIllegalFieldValueException.class);
-//        checkClass(DurationField.class);
         checkClass(BigDecimal.class);
     }
 
