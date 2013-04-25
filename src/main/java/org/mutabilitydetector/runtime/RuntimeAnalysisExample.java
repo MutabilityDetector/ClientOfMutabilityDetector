@@ -24,7 +24,7 @@ public final class RuntimeAnalysisExample {
      */
     private final AnalysisSession analysisSession = 
             ThreadUnsafeAnalysisSession.createWithCurrentClassPath(OUT_OF_THE_BOX_CONFIGURATION);
-
+    
     private void run(Object requiredToBeImmutable) {
         
         /* 
