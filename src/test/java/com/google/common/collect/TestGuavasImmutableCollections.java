@@ -1,19 +1,16 @@
 package com.google.common.collect;
 
 import static org.mutabilitydetector.unittesting.AllowedReason.allowingForSubclassing;
+import static org.mutabilitydetector.unittesting.AllowedReason.assumingFields;
 import static org.mutabilitydetector.unittesting.AllowedReason.provided;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
 import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
 
-import net.ttsui.junit.rules.pending.PendingImplementation;
-import net.ttsui.junit.rules.pending.PendingRule;
-
-import org.junit.Rule;
 import org.junit.Test;
 
 public class TestGuavasImmutableCollections {
 
-    @Test
+	@Test
     public void com_google_common_collect_EmptyImmutableList() throws Exception {
         assertInstancesOf(EmptyImmutableList.class, areImmutable(), allowingForSubclassing());
     }
@@ -25,13 +22,11 @@ public class TestGuavasImmutableCollections {
                           provided(ImmutableList.class).isAlsoImmutable());
     }
     
-    
-    @Rule public PendingRule rule = new PendingRule();
-    
-    @PendingImplementation
     @Test
     public void com_google_common_collect_RegularImmutableList() throws Exception {
-        assertInstancesOf(RegularImmutableList.class, areImmutable(), allowingForSubclassing());
+        assertInstancesOf(RegularImmutableList.class, areImmutable(), 
+        		allowingForSubclassing(), 
+        		assumingFields("array").areNotModifiedAndDoNotEscape());
     }
 
     @Test
