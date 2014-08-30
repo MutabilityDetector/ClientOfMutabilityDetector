@@ -12,6 +12,6 @@ public class JdkClasses {
 
 	@Test
 	public void java_util_optional() throws Exception {
-		assertInstancesOf(Optional.class, areImmutable(), provided(Object.class).isAlsoImmutable());
+		assertInstancesOf(Optional.class, areImmutable(), provided("T").isAlsoImmutable());
 	}
 }

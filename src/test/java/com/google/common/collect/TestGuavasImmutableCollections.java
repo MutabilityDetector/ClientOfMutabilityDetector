@@ -37,7 +37,7 @@ public class TestGuavasImmutableCollections {
     
     @Test
     public void com_google_common_collect_SingletonImmutableList() throws Exception {
-        assertInstancesOf(SingletonImmutableList.class, areImmutable(), provided(Object.class).isAlsoImmutable());
+        assertInstancesOf(SingletonImmutableList.class, areImmutable(), provided("E").isAlsoImmutable());
     }
     
     @Test
