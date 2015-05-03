@@ -13,15 +13,22 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
+import net.ttsui.junit.rules.pending.PendingImplementation;
+import net.ttsui.junit.rules.pending.PendingRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 public class Jdk8OptionalUsage {
+
+	@Rule
+	public PendingRule pendingRule = new PendingRule();
 
 	@Test
 	public void java_util_optional() throws Exception {
 		assertInstancesOf(Optional.class, areImmutable(), provided("T").isAlsoImmutable());
 	}
 
+	@PendingImplementation
 	@Test
 	public void usingAnOptionalFieldWithImmutableElementIsImmutable() throws Exception {
 		assertInstancesOf(HasOptionalString.class, areImmutable());
