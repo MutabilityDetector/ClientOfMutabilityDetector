@@ -39,6 +39,19 @@ public class Jdk8OptionalUsage {
 		assertInstancesOf(HasOptionalDate.class, areNotImmutable());
 	}
 
+
+	@Test
+	public void usingAnOptionalFieldWithGenericElementIsMutable() throws Exception {
+		assertInstancesOf(HasOptionalGeneric.class, areNotImmutable());
+	}
+
+
+	@PendingImplementation
+	@Test
+	public void usingAnOptionalFieldWithGenericElementIsMutableButCanBeAllowed() throws Exception {
+		assertInstancesOf(HasOptionalGeneric.class, areImmutable(), provided("MY_TYPE").isAlsoImmutable());
+	}
+
 	@Test
 	public void usingASafelyWrappedListFieldWithImmutableElementTypeIsImmutable() throws Exception {
 		assertInstancesOf(HasListOfImmutableThings.class, areImmutable());
@@ -79,6 +92,14 @@ public class Jdk8OptionalUsage {
 
 		public HasOptionalDate(Optional<Date> optionalDateField) {
 			this.optionalDateField = optionalDateField;
+		}
+	}
+
+	public static final class HasOptionalGeneric<MY_TYPE> {
+		private final Optional<MY_TYPE> optionalGenericField;
+
+		public HasOptionalGeneric(Optional<MY_TYPE> optionalGenericField) {
+			this.optionalGenericField = optionalGenericField;
 		}
 	}
 
