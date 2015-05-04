@@ -33,8 +33,8 @@ public class VanillaJUnitMatcherCompatibility {
                     "Expected: either Immutable or Effectively Immutable\n" + 
                     "     but: org.mutabilitydetector.VanillaJUnitMatcherCompatibility$CheckThisClass is actually NOT_IMMUTABLE\n" + 
                     "    Reasons:\n" + 
-                    "        Field is not final, if shared across threads the Java Memory Model will not guarantee it is initialised before it is read. [Field: reassignMe, Class: org.mutabilitydetector.VanillaJUnitMatcherCompatibility$CheckThisClass]\n" + 
                     "        Field is visible outwith this class, and is not declared final. [Field: reassignMe, Class: org.mutabilitydetector.VanillaJUnitMatcherCompatibility$CheckThisClass]\n" + 
+                    "        Field is not final, if shared across threads the Java Memory Model will not guarantee it is initialised before it is read. [Field: reassignMe, Class: org.mutabilitydetector.VanillaJUnitMatcherCompatibility$CheckThisClass]\n" + 
                     "    Allowed reasons:\n" + 
                     "        None.");
         }
