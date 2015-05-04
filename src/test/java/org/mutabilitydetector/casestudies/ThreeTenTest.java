@@ -18,7 +18,7 @@ import javax.time.zone.ZoneOffsetTransition;
 
 import org.junit.Ignore;
 import org.junit.Test;
-
+import org.mutabilitydetector.unittesting.AllowedReason;
 
 
 public class ThreeTenTest {
@@ -299,7 +299,7 @@ public class ThreeTenTest {
          */
         assertInstancesOf(Class.forName("javax.time.format.DateTimeFormatterBuilder$CompositePrinterParser"), areImmutable(), 
                 provided(Locale.class).isAlsoImmutable(),
-                AssumingArrayFields.named("printerParsers").areNotModifiedAndDoNotEscape());
+                assumingFields("printerParsers").areNotModifiedAndDoNotEscape());
     }
 
     @Test
