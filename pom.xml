@@ -11,12 +11,14 @@
 
 	<description>Client project used to test Mutability Detector.
 	</description>
-	<url>http://code.google.com/p/mutability-detector</url>
+	<url>http://mutabilitydetector.org</url>
 	<issueManagement>
-		<url>http://code.google.com/p/mutability-detector/issues/list</url>
+		<url>https://github.com/MutabilityDetector/MutabilityDetector/issues</url>
 	</issueManagement>
 	<scm>
-		<url>http://mutability-detector.googlecode.com/svn/trunk/</url>
+		<url>https://github.com/MutabilityDetector/MutabilityDetector</url>
+		<connection>scm:git:https://github.com/MutabilityDetector/MutabilityDetector</connection>
+		<developerConnection>scm:git:https://github.com/MutabilityDetector/MutabilityDetector</developerConnection>
 	</scm>
 	<repositories>
 		<repository>
