@@ -1,11 +1,9 @@
 package org.mutabilitydetector.issues;
 
 import com.google.common.collect.ImmutableList;
-import net.ttsui.junit.rules.pending.PendingImplementation;
 import net.ttsui.junit.rules.pending.PendingRule;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mutabilitydetector.ConfigurationBuilder;
 import org.mutabilitydetector.Configurations;
 import org.mutabilitydetector.unittesting.MutabilityAsserter;
@@ -21,19 +19,16 @@ public class GitHubIssue_39 {
 
     @Rule public PendingRule pendingRule = new PendingRule();
 
-    @PendingImplementation
     @Test
     public void immutableListWithImmutableElementTypeIsImmutable() {
         assertInstancesOf(HasImmutableListWithImmutableElementType.class, areImmutable());
     }
 
-    @PendingImplementation
     @Test
-    public void immutableListWithMutableElementTypeIsImmutable() {
-        assertInstancesOf(HasImmutableListWithMutableElementType.class, areImmutable());
+    public void immutableListWithMutableElementTypeIsMutable() {
+        assertInstancesOf(HasImmutableListWithMutableElementType.class, areNotImmutable());
     }
 
-    @PendingImplementation
     @Test
     public void copiesIntoImmutableListIsImmutable() {
         assertInstancesOf(CopiesListIntoImmutableListField.class, areImmutable());

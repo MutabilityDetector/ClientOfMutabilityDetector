@@ -20,15 +20,11 @@ import org.junit.Test;
 
 public class Jdk8OptionalUsage {
 
-	@Rule
-	public PendingRule pendingRule = new PendingRule();
-
 	@Test
 	public void java_util_optional() throws Exception {
 		assertInstancesOf(Optional.class, areImmutable(), provided("T").isAlsoImmutable());
 	}
 
-	@PendingImplementation
 	@Test
 	public void usingAnOptionalFieldWithImmutableElementIsImmutable() throws Exception {
 		assertInstancesOf(HasOptionalString.class, areImmutable());
@@ -46,7 +42,6 @@ public class Jdk8OptionalUsage {
 	}
 
 
-	@PendingImplementation
 	@Test
 	public void usingAnOptionalFieldWithGenericElementIsMutableButCanBeAllowed() throws Exception {
 		assertInstancesOf(HasOptionalGeneric.class, areImmutable(), provided("MY_TYPE").isAlsoImmutable());
