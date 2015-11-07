@@ -3,6 +3,7 @@ package org.mutabilitydetector.multithreaded;
 import org.mutabilitydetector.AnalysisErrorReporter;
 import org.mutabilitydetector.AnalysisResult;
 import org.mutabilitydetector.AnalysisSession;
+import org.mutabilitydetector.checkers.info.AnalysisInProgress;
 import org.mutabilitydetector.locations.Dotted;
 
 import java.util.Map;
@@ -28,6 +29,11 @@ public class ThreadLocalAnalysisSession implements AnalysisSession {
     @Override
     public AnalysisResult resultFor(Dotted dotted) {
         return lazyGetThreadAnalysisSession().resultFor(dotted);
+    }
+
+    @Override
+    public AnalysisResult processTransitiveAnalysis(Dotted className, AnalysisInProgress analysisInProgress) {
+        return lazyGetThreadAnalysisSession().processTransitiveAnalysis(className, analysisInProgress);
     }
 
     @Override

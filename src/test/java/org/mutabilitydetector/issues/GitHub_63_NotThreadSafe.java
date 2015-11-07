@@ -10,10 +10,6 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
 import org.mutabilitydetector.Configurations;
 import org.mutabilitydetector.multithreaded.ThreadSafeMutabilityAsserter;
 import org.mutabilitydetector.unittesting.MutabilityAssert;
@@ -96,5 +92,4 @@ public final class GitHub_63_NotThreadSafe {
         /* Fail if there are any. */
         assertEquals(Lists.newArrayList(failures), Lists.newArrayList());
     }
-
 }
