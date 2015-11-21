@@ -1,8 +1,10 @@
 package org.mutabilitydetector.multithreaded;
 
+import org.mutabilitydetector.AnalysisError;
 import org.mutabilitydetector.AnalysisErrorReporter;
 import org.mutabilitydetector.AnalysisResult;
 import org.mutabilitydetector.AnalysisSession;
+import org.mutabilitydetector.checkers.info.AnalysisInProgress;
 import org.mutabilitydetector.locations.Dotted;
 
 import java.util.Map;
@@ -46,7 +48,7 @@ public class ThreadLocalAnalysisSession implements AnalysisSession {
     }
 
     @Override
-    public Iterable<AnalysisErrorReporter.AnalysisError> getErrors() {
+    public Iterable<AnalysisError> getErrors() {
         return lazyGetThreadAnalysisSession().getErrors();
     }
 }
