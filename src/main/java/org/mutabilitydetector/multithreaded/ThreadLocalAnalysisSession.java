@@ -1,7 +1,6 @@
 package org.mutabilitydetector.multithreaded;
 
 import org.mutabilitydetector.AnalysisError;
-import org.mutabilitydetector.AnalysisErrorReporter;
 import org.mutabilitydetector.AnalysisResult;
 import org.mutabilitydetector.AnalysisSession;
 import org.mutabilitydetector.checkers.info.AnalysisInProgress;
