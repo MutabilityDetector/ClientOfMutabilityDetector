@@ -5,7 +5,7 @@ import static org.mutabilitydetector.Configurations.OUT_OF_THE_BOX_CONFIGURATION
 import org.mutabilitydetector.AnalysisResult;
 import org.mutabilitydetector.AnalysisSession;
 import org.mutabilitydetector.IsImmutable;
-import org.mutabilitydetector.ThreadUnsafeAnalysisSession;
+import org.mutabilitydetector.DefaultCachingAnalysisSession;
 import org.mutabilitydetector.locations.Dotted;
 
 public final class RuntimeAnalysisExample {
@@ -22,8 +22,8 @@ public final class RuntimeAnalysisExample {
      * other than the OUT_OF_THE_BOX_CONFIGURATION. See ConfigurationBuilder for
      * more details.
      */
-    private final AnalysisSession analysisSession = 
-            ThreadUnsafeAnalysisSession.createWithCurrentClassPath(OUT_OF_THE_BOX_CONFIGURATION);
+    private final AnalysisSession analysisSession =
+            DefaultCachingAnalysisSession.createWithCurrentClassPath(OUT_OF_THE_BOX_CONFIGURATION);
     
     private void run(Object requiredToBeImmutable) {
         

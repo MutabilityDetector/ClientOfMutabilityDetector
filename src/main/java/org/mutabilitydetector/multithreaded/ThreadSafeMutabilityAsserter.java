@@ -8,7 +8,7 @@ import org.mutabilitydetector.Configuration;
 import org.mutabilitydetector.ConfigurationBuilder;
 import org.mutabilitydetector.Configurations;
 import org.mutabilitydetector.MutableReasonDetail;
-import org.mutabilitydetector.ThreadUnsafeAnalysisSession;
+import org.mutabilitydetector.DefaultCachingAnalysisSession;
 import org.mutabilitydetector.locations.Dotted;
 import org.mutabilitydetector.unittesting.MutabilityAssert;
 import org.mutabilitydetector.unittesting.internal.AssertionReporter;
@@ -48,7 +48,7 @@ public class ThreadSafeMutabilityAsserter {
     public static ThreadSafeMutabilityAsserter configured(Configuration configuration) {
         return new ThreadSafeMutabilityAsserter(
                 new AssertionReporter(),
-                new ThreadLocalAnalysisSession(() -> ThreadUnsafeAnalysisSession.createWithCurrentClassPath(configuration)));
+                new ThreadLocalAnalysisSession(() -> DefaultCachingAnalysisSession.createWithCurrentClassPath(configuration)));
     }
 
     /**
@@ -71,7 +71,7 @@ public class ThreadSafeMutabilityAsserter {
      */
     public static ThreadSafeMutabilityAsserter configured(ConfigurationBuilder configuration) {
         return new ThreadSafeMutabilityAsserter(new AssertionReporter(),
-                new ThreadLocalAnalysisSession(() -> ThreadUnsafeAnalysisSession.createWithCurrentClassPath(configuration.build())));
+                new ThreadLocalAnalysisSession(() -> DefaultCachingAnalysisSession.createWithCurrentClassPath(configuration.build())));
     }
 
     /**
