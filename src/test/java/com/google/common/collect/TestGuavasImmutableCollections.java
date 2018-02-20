@@ -36,11 +36,6 @@ public class TestGuavasImmutableCollections {
     }
 
     @Test
-    public void com_google_common_collect_SingletonImmutableList() throws Exception {
-        assertInstancesOf(SingletonImmutableList.class, areImmutable(), provided("E").isAlsoImmutable());
-    }
-
-    @Test
     public void com_google_common_collect_ContiguousSet() throws Exception {
         assertInstancesOf(com.google.common.collect.ContiguousSet.class, areImmutable(),
                 allowingForSubclassing(),
