@@ -130,7 +130,7 @@
 			<artifactId>pending</artifactId>
 			<version>0.0.3</version>
 			<scope>system</scope>
-			<systemPath>${basedir}/lib/pending-0.0.3.jar</systemPath>
+			<systemPath>${basedir}/lib/pending-0.0.1073.jar</systemPath>
 		</dependency>
 
 
