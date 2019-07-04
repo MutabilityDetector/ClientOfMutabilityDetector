@@ -1,15 +1,15 @@
 package com.google.common.collect;
 
+import net.ttsui.junit.rules.pending.PendingImplementation;
+import net.ttsui.junit.rules.pending.PendingRule;
+import org.junit.Rule;
+import org.junit.Test;
+
 import static org.mutabilitydetector.unittesting.AllowedReason.allowingForSubclassing;
 import static org.mutabilitydetector.unittesting.AllowedReason.assumingFields;
 import static org.mutabilitydetector.unittesting.AllowedReason.provided;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertInstancesOf;
 import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable;
-
-import net.ttsui.junit.rules.pending.PendingImplementation;
-import net.ttsui.junit.rules.pending.PendingRule;
-import org.junit.Rule;
-import org.junit.Test;
 
 public class TestGuavasImmutableCollections {
 
@@ -48,7 +48,6 @@ public class TestGuavasImmutableCollections {
     }
 
 
-    @PendingImplementation("Lazily computed field 'asList'")
     @Test
     public void com_google_common_collect_ImmutableCollection() throws Exception {
         assertInstancesOf(com.google.common.collect.ImmutableCollection.class, areImmutable(),
@@ -131,9 +130,11 @@ public class TestGuavasImmutableCollections {
     }
 
 
+    @PendingImplementation("Lazily computed field 'asList'")
     @Test
     public void com_google_common_collect_ImmutableSet() throws Exception {
         assertInstancesOf(com.google.common.collect.ImmutableSet.class, areImmutable(),
+                provided("E").isAlsoImmutable(),
                 allowingForSubclassing());
     }
 
