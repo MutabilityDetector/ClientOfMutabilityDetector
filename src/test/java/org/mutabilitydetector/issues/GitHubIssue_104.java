@@ -1,5 +1,8 @@
 package org.mutabilitydetector.issues;
 
+import net.ttsui.junit.rules.pending.PendingImplementation;
+import net.ttsui.junit.rules.pending.PendingRule;
+import org.junit.Rule;
 import org.junit.Test;
 
 import static org.mutabilitydetector.unittesting.AllowedReason.provided;
@@ -8,6 +11,10 @@ import static org.mutabilitydetector.unittesting.MutabilityMatchers.areImmutable
 
 public class GitHubIssue_104 {
 
+    @Rule
+    public PendingRule pendingRule = new PendingRule();
+
+    @PendingImplementation
     @Test
     public void assertImmutability() {
         assertInstancesOf(ClassWithGenericField.class, areImmutable(),
