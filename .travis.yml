@@ -1,4 +1,13 @@
 language: java
 jdk:
   - oraclejdk8
-script: "mvn test"
+
+matrix:
+  include:
+    - jdk: oraclejdk8
+      env: MVN_PROFILE=jdk8
+    - jdk: openjdk10
+      env: MVN_PROFILE=jdk10
+    - jdk: openjdk11
+      env: MVN_PROFILE=jdk11
+script: "mvn test -P ${MVN_PROFILE}"
