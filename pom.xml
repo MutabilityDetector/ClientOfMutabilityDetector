@@ -71,6 +71,12 @@
 		</profile>
 		<profile>
 			<id>jdk11</id>
+			<activation>
+				<property>
+					<name>jdk</name>
+					<value>jdk11</value>
+				</property>
+			</activation>
 			<properties>
 				<java.version>11</java.version>
 			</properties>

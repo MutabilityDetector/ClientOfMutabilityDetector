@@ -48,6 +48,11 @@ public class Jdk8OptionalUsage {
 	}
 
 	@Test
+	public void usingAListFieldWithListOfIsImmutable() throws Exception {
+		assertInstancesOf(CopyListIntoNewListUsingListOf.class, areImmutable());
+	}
+
+	@Test
 	public void usingASafelyWrappedListFieldWithImmutableElementTypeIsImmutable() throws Exception {
 		assertInstancesOf(HasListOfImmutableThings.class, areImmutable());
 	}
@@ -111,6 +116,14 @@ public class Jdk8OptionalUsage {
 
 		public ConcreteCollectionWithImmutableElementType(TreeSet<String> strings) {
 			this.strings = Collections.unmodifiableSet(new TreeSet(strings));
+		}
+	}
+
+	public static final class CopyListIntoNewListUsingListOf {
+		public final List<String> strings;
+
+		public CopyListIntoNewListUsingListOf(List<String> strings) {
+			this.strings = List.of(strings.toArray(new String[0]));
 		}
 	}
 
