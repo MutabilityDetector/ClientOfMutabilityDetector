@@ -2,8 +2,8 @@ language: java
 
 matrix:
   include:
-    - jdk: openjdk8
-      env: MVN_PROFILE=jdk8
+    - jdk: openjdk9
+      env: MVN_PROFILE=jdk9
     - jdk: openjdk10
       env: MVN_PROFILE=jdk10
     - jdk: openjdk11
