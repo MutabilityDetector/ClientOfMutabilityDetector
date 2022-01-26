@@ -22,10 +22,6 @@ public class JdkImmutableCollectionsTest {
         assertInstancesOf(HasCollectionFieldContainingGenericElementTypes.class, areNotImmutable());
         assertInstancesOf(HasCollectionFieldContainingGenericElementTypes.class, areImmutable(), provided("MY_TYPE").isAlsoImmutable());
     }
-    @Test
-    public void usingAListFieldWithListOfIsImmutable() throws Exception {
-        assertInstancesOf(CopyListIntoNewListUsingListOf.class, areImmutable());
-    }
 
     @Test
     public void usingASafelyWrappedListFieldWithImmutableElementTypeIsImmutable() throws Exception {
@@ -58,13 +54,6 @@ public class JdkImmutableCollectionsTest {
         }
     }
 
-    public static final class CopyListIntoNewListUsingListOf {
-        public final List<String> strings;
-
-        public CopyListIntoNewListUsingListOf(List<String> strings) {
-            this.strings = List.of(strings.toArray(new String[0]));
-        }
-    }
 
     public static final class HasListOfImmutableThings {
         public final List<String> strings;
