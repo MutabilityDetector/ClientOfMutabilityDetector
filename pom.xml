@@ -55,12 +55,12 @@
 
 	<profiles>
 		<profile>
-			<id>jdk9</id>
+			<id>jdk8</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<java.version>9</java.version>
+				<java.version>8</java.version>
 			</properties>
 		</profile>
 		<profile>
