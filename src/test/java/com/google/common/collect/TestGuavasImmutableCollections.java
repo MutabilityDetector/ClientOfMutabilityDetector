@@ -130,7 +130,6 @@ public class TestGuavasImmutableCollections {
     }
 
 
-    @PendingImplementation("Lazily computed field 'asList'")
     @Test
     public void com_google_common_collect_ImmutableSet() throws Exception {
         assertInstancesOf(com.google.common.collect.ImmutableSet.class, areImmutable(),
